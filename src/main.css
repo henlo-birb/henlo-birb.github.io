@@ -60,6 +60,7 @@ span {
   margin: 10px;
   left: 0;
   right: 0;
+  overflow-y: scroll;
 }
 
 #filters {

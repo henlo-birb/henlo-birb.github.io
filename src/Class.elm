@@ -1,6 +1,6 @@
 module Class exposing (..)
 
-import Parser exposing ((|.), (|=), Parser, backtrackable, chompUntil, chompWhile, getChompedString, oneOf, spaces, succeed, symbol, token)
+import Parser exposing ((|.), (|=), Parser, backtrackable, chompUntil, chompWhile, getChompedString, map, oneOf, spaces, succeed, symbol, token)
 import Time exposing (Time)
 import Utilities exposing (log)
 
@@ -14,6 +14,7 @@ type alias Class =
     , days : List String
     , startTime : Time
     , endTime : Time
+    , termLength : String
     , frequency : String
     , link : String
     }
@@ -90,6 +91,14 @@ generateClass link html =
                 |. oneOf [ symbol "-", succeed () ]
                 |. spaces
                 |= Time.timeParser
+                |. spaces
+                |. symbol "("
+                |= oneOf
+                    [ succeed "Full Term" |. chompUntil "Full"
+                    , succeed "1st 7 Weeks" |. chompUntil "1st"
+                    , succeed "2nd 7 weeks" |. chompUntil "2nd"
+                    ]
+                |. chompUntil ")"
                 |. chompThrough "Course Frequency: "
                 |= (chompUntil "<br>" |> getChompedString |> Parser.map String.trim)
                 |= succeed link

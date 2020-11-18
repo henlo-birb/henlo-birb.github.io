@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="" />
+    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Class.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Class.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,22 +29,28 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/elm.json" />
         <option value="$PROJECT_DIR$/src/EasyTime.elm" />
-        <option value="$PROJECT_DIR$/src/Class.elm" />
         <option value="$PROJECT_DIR$/src/Time.elm" />
-        <option value="$PROJECT_DIR$/src/main.css" />
-        <option value="$PROJECT_DIR$/src/Main.elm" />
         <option value="$PROJECT_DIR$/src/Utilities.elm" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/build/index.html" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/main.css" />
+        <option value="$PROJECT_DIR$/src/Class.elm" />
+        <option value="$PROJECT_DIR$/src/Main.elm" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -76,6 +88,8 @@
       <workItem from="1605572403833" duration="8794000" />
       <workItem from="1605640743694" duration="1151000" />
       <workItem from="1605648387547" duration="10821000" />
+      <workItem from="1605662416860" duration="203000" />
+      <workItem from="1605709772092" duration="2542000" />
     </task>
     <servers />
   </component>

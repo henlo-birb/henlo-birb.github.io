@@ -31,12 +31,13 @@ type alias Model =
     , dayFilters : List String
     , levelFilters : List Int
     , creditFilters : List Int
+    , termLengthFilters : List String
     }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( Model [] [] [] "" False False Name [ "M", "T", "W", "Th", "F", "TBA" ] [ 2000, 4000 ] [ 1, 2, 4 ], Cmd.none )
+    ( Model [] [] [] "" False False Name [ "M", "T", "W", "Th", "F", "TBA" ] [ 2000, 4000 ] [ 1, 2, 4 ] [ "Full Term", "1st 7 Weeks", "2nd 7 Weeks" ], Cmd.none )
 
 
 
@@ -52,6 +53,7 @@ type SortBy
     | Day
     | RemoteStatus
     | Frequency
+    | TermLength
 
 
 type Msg
@@ -62,6 +64,7 @@ type Msg
     | SetDayFilter String Bool
     | SetLevelFilter Int Bool
     | SetCreditFilter Int Bool
+    | SetTermLengthFilter String Bool
     | SortClasses SortBy
 
 
@@ -134,6 +137,13 @@ update msg model =
             in
             ( { model | creditFilters = creditFilters }, Cmd.none )
 
+        SetTermLengthFilter filter value ->
+            let
+                termLengthFilters =
+                    ternary value (model.termLengthFilters ++ [ filter ]) (remove filter model.termLengthFilters)
+            in
+            ( { model | termLengthFilters = termLengthFilters }, Cmd.none )
+
         SortClasses by ->
             let
                 sorter =
@@ -172,6 +182,9 @@ update msg model =
 
                         Frequency ->
                             sortBy .frequency
+
+                        TermLength ->
+                            sortBy .termLength
             in
             ( if by == model.sortingBy then
                 { model | classes = model.classes |> List.reverse, sortingReversed = not model.sortingReversed }
@@ -213,6 +226,13 @@ view model =
                 , text <| String.fromInt filter
                 ]
 
+        termLengthCheckbox : String -> Html Msg
+        termLengthCheckbox filter =
+            div []
+                [ input [ type_ "checkbox", checked (List.any ((==) filter) model.termLengthFilters), onCheck (\value -> SetTermLengthFilter filter value) ] []
+                , text <| filter
+                ]
+
         classTh : String -> SortBy -> Html Msg
         classTh name sortBy_ =
             th [ class "clickable", onClick <| SortClasses sortBy_ ]
@@ -230,6 +250,7 @@ view model =
                             && List.any (\c -> List.any ((==) c) model.dayFilters) class.days
                             && List.any ((==) class.level) model.levelFilters
                             && List.any ((==) class.credits) model.creditFilters
+                            && List.any ((==) class.termLength) model.termLengthFilters
                         )
                 ]
                 [ td []
@@ -244,13 +265,14 @@ view model =
                 , td [] [ text <| Time.toString class.endTime ]
                 , td [] [ text class.remoteStatus ]
                 , td [] [ text class.frequency ]
+                , td [] [ text class.termLength ]
                 , td [] [ a [ href class.link ] [ text class.link ] ]
                 ]
 
         headers =
             List.map2 classTh
-                [ "Class Name", "Credits", "Level", "Days", "Start Time", "End Time", "Remote Status", "Frequency" ]
-                [ Name, Credits, Level, Day, StartTime, EndTime, RemoteStatus, Frequency ]
+                [ "Class Name", "Credits", "Level", "Days", "Start Time", "End Time", "Remote Status", "Frequency", "Length" ]
+                [ Name, Credits, Level, Day, StartTime, EndTime, RemoteStatus, Frequency, TermLength ]
     in
     div [ id "bigContainer" ]
         [ h1 [] [ text "Bennington College Schedule Creator" ]
@@ -284,6 +306,13 @@ view model =
                 , br [] []
                 , levelCheckbox 2000
                 , levelCheckbox 4000
+                ]
+            , div [ class "filterDiv" ]
+                [ span [] [ text "Length" ]
+                , br [] []
+                , termLengthCheckbox "Full Term"
+                , termLengthCheckbox "1st 7 Weeks"
+                , termLengthCheckbox "2nd 7 Weeks"
                 ]
             ]
         , table []
