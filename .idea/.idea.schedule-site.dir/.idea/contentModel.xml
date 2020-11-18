@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\kid_y\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\browser\1.0.2" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\bytes\1.0.8" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\core\1.0.4" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\file\1.0.5" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\html\1.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\http\2.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\json\1.1.2" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\parser\1.1.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\random\1.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\regex\1.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\time\1.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\url\1.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm\virtual-dom\1.0.2" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm-community\list-extra\8.2.4" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm-community\maybe-extra\5.2.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\elm-explorations\test\1.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\hecrj\html-parser\2.4.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\rtfeldman\elm-hex\1.0.0" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\kid_y\Documents\elm\schedule-site" t="IncludeFlat" />
+  </component>
+</project>
