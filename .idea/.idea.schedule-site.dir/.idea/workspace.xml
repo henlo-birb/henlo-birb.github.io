@@ -28,11 +28,13 @@
       <list>
         <option value="$PROJECT_DIR$/elm.json" />
         <option value="$PROJECT_DIR$/src/EasyTime.elm" />
-        <option value="$PROJECT_DIR$/src/Utilities.elm" />
         <option value="$PROJECT_DIR$/src/Class.elm" />
         <option value="$PROJECT_DIR$/src/Time.elm" />
         <option value="$PROJECT_DIR$/src/main.css" />
         <option value="$PROJECT_DIR$/src/Main.elm" />
+        <option value="$PROJECT_DIR$/src/Utilities.elm" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -73,7 +75,7 @@
       <workItem from="1605476635258" duration="10938000" />
       <workItem from="1605572403833" duration="8794000" />
       <workItem from="1605640743694" duration="1151000" />
-      <workItem from="1605648387547" duration="10212000" />
+      <workItem from="1605648387547" duration="10821000" />
     </task>
     <servers />
   </component>

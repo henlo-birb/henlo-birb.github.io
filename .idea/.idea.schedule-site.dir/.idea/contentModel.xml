@@ -22,6 +22,8 @@
     <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\hecrj\html-parser\2.4.0" t="IncludeRecursive" />
     <e p="C:\Users\kid_y\AppData\Roaming\elm\0.19.1\packages\rtfeldman\elm-hex\1.0.0" t="IncludeRecursive" />
     <e p="C:\Users\kid_y\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\kid_y\Documents\elm\schedule-site" t="IncludeFlat" />
+    <e p="C:\Users\kid_y\Documents\elm\schedule-site" t="IncludeFlat">
+      <e p=".git\info\exclude" t="IncludeRecursive" />
+    </e>
   </component>
 </project>

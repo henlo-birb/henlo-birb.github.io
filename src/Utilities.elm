@@ -13,7 +13,11 @@ ternary cond a b =
 
 
 log =
-    Debug.log ""
+    identity
+
+
+
+--Debug.log ""
 
 
 unwrapMap =
