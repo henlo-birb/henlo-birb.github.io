@@ -31,13 +31,14 @@ type alias Model =
     , dayFilters : List String
     , levelFilters : List Int
     , creditFilters : List Int
+    , remoteStatusFilters : List String
     , termLengthFilters : List String
     }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( Model [] [] [] "" False False Name [ "M", "T", "W", "Th", "F", "TBA" ] [ 2000, 4000 ] [ 1, 2, 4 ] [ "Full Term", "1st 7 Weeks", "2nd 7 Weeks" ], Cmd.none )
+    ( Model [] [] [] "" False False Name [ "M", "T", "W", "Th", "F", "TBA" ] [ 2000, 4000 ] [ 1, 2, 4 ] [ "Hybrid", "In Person", "Remote" ] [ "Full Term", "1st 7 Weeks", "2nd 7 Weeks" ], Cmd.none )
 
 
 
@@ -65,6 +66,7 @@ type Msg
     | SetLevelFilter Int Bool
     | SetCreditFilter Int Bool
     | SetTermLengthFilter String Bool
+    | SetRemoteStatusFilter String Bool
     | SortClasses SortBy
 
 
@@ -136,6 +138,13 @@ update msg model =
                     ternary value (model.creditFilters ++ [ filter ]) (remove filter model.creditFilters)
             in
             ( { model | creditFilters = creditFilters }, Cmd.none )
+
+        SetRemoteStatusFilter filter value ->
+            let
+                remoteStatusFilters =
+                    ternary value (model.remoteStatusFilters ++ [ filter ]) (remove filter model.remoteStatusFilters)
+            in
+            ( { model | remoteStatusFilters = remoteStatusFilters }, Cmd.none )
 
         SetTermLengthFilter filter value ->
             let
@@ -226,6 +235,13 @@ view model =
                 , text <| String.fromInt filter
                 ]
 
+        remoteStatusCheckbox : String -> Html Msg
+        remoteStatusCheckbox filter =
+            div []
+                [ input [ type_ "checkbox", checked (List.any ((==) filter) model.remoteStatusFilters), onCheck (\value -> SetRemoteStatusFilter filter value) ] []
+                , text <| filter
+                ]
+
         termLengthCheckbox : String -> Html Msg
         termLengthCheckbox filter =
             div []
@@ -250,6 +266,7 @@ view model =
                             && List.any (\c -> List.any ((==) c) model.dayFilters) class.days
                             && List.any ((==) class.level) model.levelFilters
                             && List.any ((==) class.credits) model.creditFilters
+                            && List.any ((==) class.remoteStatus) model.remoteStatusFilters
                             && List.any ((==) class.termLength) model.termLengthFilters
                         )
                 ]
@@ -306,6 +323,13 @@ view model =
                 , br [] []
                 , levelCheckbox 2000
                 , levelCheckbox 4000
+                ]
+            , div [ class "filterDiv" ]
+                [ span [] [ text "Remote Status" ]
+                , br [] []
+                , remoteStatusCheckbox "Hybrid"
+                , remoteStatusCheckbox "Remote"
+                , remoteStatusCheckbox "In Person"
                 ]
             , div [ class "filterDiv" ]
                 [ span [] [ text "Length" ]
