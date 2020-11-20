@@ -5,6 +5,9 @@ module Main exposing (..)
 
 import Browser
 import Class exposing (..)
+import FontAwesome.Icon exposing (viewIcon)
+import FontAwesome.Solid exposing (sortDown, sortUp)
+import FontAwesome.Styles
 import Html exposing (Html, a, br, button, div, h1, h2, input, p, span, table, tbody, td, text, textarea, th, thead, tr)
 import Html.Attributes exposing (autofocus, checked, class, hidden, href, id, type_)
 import Html.Events exposing (..)
@@ -212,7 +215,7 @@ view : Model -> Html Msg
 view model =
     let
         caret a =
-            ternary (model.sortingBy == a && model.sortingReversed) "\n⌃" "\n⌄"
+            ternary (model.sortingBy == a && model.sortingReversed) sortUp sortDown
 
         dayCheckbox : String -> Html Msg
         dayCheckbox filter =
@@ -254,7 +257,7 @@ view model =
             th [ class "clickable", onClick <| SortClasses sortBy_ ]
                 [ span [] [ text name ]
                 , br [] []
-                , span [] [ text <| caret sortBy_ ]
+                , viewIcon <| caret sortBy_
                 ]
 
         classTr : Class -> Html Msg
@@ -292,7 +295,8 @@ view model =
                 [ Name, Credits, Level, Day, StartTime, EndTime, RemoteStatus, Frequency, TermLength ]
     in
     div [ id "bigContainer" ]
-        [ h1 [] [ text "Bennington College Schedule Creator" ]
+        [ FontAwesome.Styles.css
+        , h1 [] [ text "Bennington College Schedule Creator" ]
         , p [] [ text "If you have any issues or questions, email me at vriskaweaver@bennington.edu" ]
         , h2 [] [ text "Put links to class pages here ↓" ]
         , textarea [ autofocus True, onInput SetText ] []

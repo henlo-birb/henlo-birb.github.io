@@ -23,7 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elm.json" beforeDir="false" afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +109,8 @@
       <workItem from="1605640743694" duration="1151000" />
       <workItem from="1605648387547" duration="10821000" />
       <workItem from="1605662416860" duration="203000" />
-      <workItem from="1605709772092" duration="4002000" />
+      <workItem from="1605709772092" duration="4216000" />
+      <workItem from="1605829630892" duration="667000" />
     </task>
     <task id="LOCAL-00001" summary="added term length">
       <created>1605716367071</created>
@@ -116,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605716367071</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added added remote status filter">
+      <created>1605717654309</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605717654309</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,12 +144,14 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="added term length" />
-    <option name="LAST_COMMIT_MESSAGE" value="added term length" />
+    <MESSAGE value="added added remote status filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="added added remote status filter" />
   </component>
   <component name="WindowStateProjectService">
     <state x="345" y="57" key="#Inspection_severity" timestamp="1605030347265">
