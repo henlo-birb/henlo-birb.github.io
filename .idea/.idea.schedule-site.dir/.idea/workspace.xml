@@ -23,9 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elm.json" beforeDir="false" afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,21 +52,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/elm.json" />
-        <option value="$PROJECT_DIR$/src/EasyTime.elm" />
-        <option value="$PROJECT_DIR$/src/Time.elm" />
-        <option value="$PROJECT_DIR$/src/Utilities.elm" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/build/index.html" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/src/main.css" />
-        <option value="$PROJECT_DIR$/src/Class.elm" />
-        <option value="$PROJECT_DIR$/src/Main.elm" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/src/Main.elm" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -110,7 +100,8 @@
       <workItem from="1605648387547" duration="10821000" />
       <workItem from="1605662416860" duration="203000" />
       <workItem from="1605709772092" duration="4216000" />
-      <workItem from="1605829630892" duration="667000" />
+      <workItem from="1605829630892" duration="899000" />
+      <workItem from="1618845141670" duration="807000" />
     </task>
     <task id="LOCAL-00001" summary="added term length">
       <created>1605716367071</created>
@@ -126,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605717654309</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="switched to fontawesome for the sort arrows for cross-platform consistency">
+      <created>1605830440234</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605830440234</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +149,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="added term length" />
     <MESSAGE value="added added remote status filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="added added remote status filter" />
+    <MESSAGE value="switched to fontawesome for the sort arrows for cross-platform consistency" />
+    <option name="LAST_COMMIT_MESSAGE" value="switched to fontawesome for the sort arrows for cross-platform consistency" />
   </component>
   <component name="WindowStateProjectService">
     <state x="345" y="57" key="#Inspection_severity" timestamp="1605030347265">

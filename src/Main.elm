@@ -78,7 +78,7 @@ update msg model =
     let
         getClass : String -> Cmd Msg
         getClass link =
-            Http.get { url = "https://cors-anywhere.herokuapp.com/" ++ link, expect = expectString <| GotPage link }
+            Http.get { url = "https://vriskas-cors-anywhere.herokuapp.com/" ++ link, expect = expectString <| GotPage link }
 
         nextClass : List String -> ( Cmd Msg, List String )
         nextClass =
