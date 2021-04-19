@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="switche to own cos server" />
+    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="removed line breaking time" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,8 +48,8 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/src/Main.elm" />
       <option value="$PROJECT_DIR$/build/index.html" />
-      <option value="$PROJECT_DIR$/src/Class.elm" />
       <option value="$PROJECT_DIR$/src/Time.elm" />
+      <option value="$PROJECT_DIR$/src/Class.elm" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618846094418</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="removed line breaking time">
+      <created>1618851778182</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618851778182</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +169,7 @@
     <MESSAGE value="switched to fontawesome for the sort arrows for cross-platform consistency" />
     <MESSAGE value="switched to own cors server" />
     <MESSAGE value="switche to own cos server" />
-    <option name="LAST_COMMIT_MESSAGE" value="switche to own cos server" />
+    <MESSAGE value="removed line breaking time" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed line breaking time" />
   </component>
 </project>

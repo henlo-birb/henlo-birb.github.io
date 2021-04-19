@@ -92,7 +92,7 @@ generateClass link html =
                 |. spaces
                 |= Time.timeParser
                 |. spaces
-                |. symbol "("
+                |. chompUntil "("
                 |= oneOf
                     [ succeed "Full Term" |. chompUntil "Full"
                     , succeed "1st 7 Weeks" |. chompUntil "1st"
