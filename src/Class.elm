@@ -60,10 +60,11 @@ generateClass link html =
                 |. chompUntil "Delivery Method: "
                 |= oneOf
                     [ succeed identity
-                        |. chompUntil "Hybrid"
+                        |. oneOf [ chompUntil "Hybrid", chompUntil "hybrid" ]
                         |= succeed "Hybrid"
                     , succeed identity
-                        |. chompUntil "remote"
+                        |. oneOf [ chompUntil "Remote", chompUntil "remote" ]
+                        |. chompUntil "emote"
                         |= succeed "Remote"
                     , succeed identity
                         |. chompUntil "in-person"
@@ -85,7 +86,7 @@ generateClass link html =
                     , succeed [ "Unknown" ]
                     ]
                 |. spaces
-                --|. logChomp (chompUntil " ")
+                |. logChomp (chompUntil " ")
                 |= Time.timeParser
                 |. spaces
                 |. oneOf [ symbol "-", succeed () ]
