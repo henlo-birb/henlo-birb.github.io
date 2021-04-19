@@ -86,7 +86,6 @@ generateClass link html =
                     , succeed [ "Unknown" ]
                     ]
                 |. spaces
-                |. logChomp (chompUntil " ")
                 |= Time.timeParser
                 |. spaces
                 |. oneOf [ symbol "-", succeed () ]
