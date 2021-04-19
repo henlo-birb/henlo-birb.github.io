@@ -22,8 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="accounted for multiple time-slot weirdness, but only showing one time-slot">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="added index html">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,7 @@
       <option value="$PROJECT_DIR$/build/index.html" />
       <option value="$PROJECT_DIR$/src/Time.elm" />
       <option value="$PROJECT_DIR$/src/Class.elm" />
+      <option value="$PROJECT_DIR$/index.html" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
@@ -150,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618860668682</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added index html">
+      <created>1618872450578</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1618872450578</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +188,7 @@
     <MESSAGE value="switche to own cos server" />
     <MESSAGE value="removed line breaking time" />
     <MESSAGE value="accounted for multiple time-slot weirdness, but only showing one time-slot" />
-    <option name="LAST_COMMIT_MESSAGE" value="accounted for multiple time-slot weirdness, but only showing one time-slot" />
+    <MESSAGE value="added index html" />
+    <option name="LAST_COMMIT_MESSAGE" value="added index html" />
   </component>
 </project>
