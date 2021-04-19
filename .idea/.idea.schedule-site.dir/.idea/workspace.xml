@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="removed line breaking time" />
+    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="accounted for multiple time-slot weirdness, but only showing one time-slot">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618851778182</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="accounted for multiple time-slot weirdness, but only showing one time-slot">
+      <created>1618860668682</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618860668682</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +179,7 @@
     <MESSAGE value="switched to own cors server" />
     <MESSAGE value="switche to own cos server" />
     <MESSAGE value="removed line breaking time" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed line breaking time" />
+    <MESSAGE value="accounted for multiple time-slot weirdness, but only showing one time-slot" />
+    <option name="LAST_COMMIT_MESSAGE" value="accounted for multiple time-slot weirdness, but only showing one time-slot" />
   </component>
 </project>
