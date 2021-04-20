@@ -14,12 +14,16 @@ ternary cond a b =
 
 
 log =
-    Debug.log ""
+    identity
+
+
+
+--Debug.log ""
 
 
 logChomp : String -> Parser a -> Parser String
 logChomp a chomp =
-    succeed (Debug.log a)
+    succeed log
         |= getChompedString chomp
 
 
