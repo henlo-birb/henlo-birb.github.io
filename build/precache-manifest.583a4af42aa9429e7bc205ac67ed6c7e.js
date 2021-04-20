@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/favicon.ico"
   },
   {
-    "revision": "94dd90153cbfc7164f02ec47d0301963",
+    "revision": "c7405878f6ade04fd173544788f4acc8",
     "url": "/index.html"
   },
   {
@@ -16,12 +16,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/manifest.json"
   },
   {
-    "revision": "c065d2f20c132415b377",
+    "revision": "72bb67becd279a84f451",
     "url": "/static/css/main.a179edbe.chunk.css"
   },
   {
-    "revision": "c065d2f20c132415b377",
-    "url": "/static/js/main.c065d2f2.chunk.js"
+    "revision": "72bb67becd279a84f451",
+    "url": "/static/js/main.72bb67be.chunk.js"
   },
   {
     "revision": "1b922744246c39b6bc43",

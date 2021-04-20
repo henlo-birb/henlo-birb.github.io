@@ -20,11 +20,13 @@ type alias Class =
     }
 
 
+termStrings =
+    [ "Full-Term", "Full-term", "Full Term", "Full term" ]
+
+
 generateClass : String -> String -> Result (List Parser.DeadEnd) Class
 generateClass link html =
     let
-        --_ =
-        --    log html
         dayParser : Parser String
         dayParser =
             oneOf
@@ -55,12 +57,11 @@ generateClass link html =
                 |. chompUntil "Delivery Method: "
                 |= oneOf
                     [ succeed identity
-                        |. oneOf [ chompUntil "Hybrid", chompUntil "hybrid" ]
+                        |. chompUntil "ybrid"
                         |= succeed "Hybrid"
                     , succeed identity
-                        |. oneOf [ chompUntil "Remote", chompUntil "remote" ]
                         |. chompUntil "emote"
-                        |= succeed "Remote"
+                        |= succeed "Remotely Accessible"
                     , succeed identity
                         |. chompUntil "in-person"
                         |= succeed "In Person"
@@ -87,15 +88,18 @@ generateClass link html =
                 |. oneOf [ symbol "-", succeed () ]
                 |. spaces
                 |= Time.timeParser
-                |. spaces
-                |. chompUntil "("
                 |= oneOf
-                    [ succeed "Full Term" |. chompUntil "Full"
-                    , succeed "1st 7 Weeks" |. chompUntil "1st"
-                    , succeed "2nd 7 weeks" |. chompUntil "2nd"
+                    [ succeed "Full Term" |. oneOf (List.map chompUntil termStrings)
+                    , succeed "1st 7 Weeks" |. backtrackable (chompUntil "1st") |. chompUntil "eeks"
+                    , succeed "2nd 7 Weeks" |. backtrackable (chompUntil "2nd") |. chompUntil "eeks"
+                    , succeed "1st Module Block" |. chompUntil "1st" |. chompUntil "odule"
+                    , succeed "2nd Module Block" |. chompUntil "2nd" |. chompUntil "odule"
+                    , succeed "3rd Module Block" |. chompUntil "3rd" |. chompUntil "odule"
+                    , succeed "4th Module Block" |. chompUntil "4th" |. chompUntil "odule"
+                    , succeed "Unknown"
                     ]
-                |. chompUntil ")"
-                |. chompThrough "Course Frequency: "
+                |. chompThrough ")"
+                |. chompThrough "Course Frequency:"
                 |= (chompUntil "<br>" |> getChompedString |> Parser.map String.trim)
                 |= succeed link
     in

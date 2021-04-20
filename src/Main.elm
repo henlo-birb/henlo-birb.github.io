@@ -39,9 +39,29 @@ type alias Model =
     }
 
 
+days =
+    [ "M", "T", "W", "Th", "F", "TBA" ]
+
+
+levels =
+    [ 2000, 4000 ]
+
+
+creditses =
+    [ 1, 2, 4 ]
+
+
+remoteStatuses =
+    [ "Hybrid", "In Person", "Remotely Accessible" ]
+
+
+termLengths =
+    [ "Full Term", "1st 7 Weeks", "2nd 7 Weeks", "1st Module Block", "2nd Module Block", "3rd Module Block", "4th Module Block" ]
+
+
 init : ( Model, Cmd Msg )
 init =
-    ( Model [] [] [] "" False False Name [ "M", "T", "W", "Th", "F", "TBA" ] [ 2000, 4000 ] [ 1, 2, 4 ] [ "Hybrid", "In Person", "Remote" ] [ "Full Term", "1st 7 Weeks", "2nd 7 Weeks" ], Cmd.none )
+    ( Model [] [] [] "" False False Name days levels creditses remoteStatuses termLengths, Cmd.none )
 
 
 
@@ -91,7 +111,7 @@ update msg model =
                     text
                         |> String.replace "," " "
                         |> String.words
-                        |> dropWhile (\a -> List.any ((==) a) model.gottenLinks)
+                        |> dropWhile (\a -> List.member a model.gottenLinks)
 
                 ( cmd, newLinks ) =
                     nextClass links
@@ -220,35 +240,35 @@ view model =
         dayCheckbox : String -> Html Msg
         dayCheckbox filter =
             div []
-                [ input [ type_ "checkbox", checked (List.any ((==) filter) model.dayFilters), onCheck (\value -> SetDayFilter filter value) ] []
+                [ input [ type_ "checkbox", checked (List.member filter model.dayFilters), onCheck (\value -> SetDayFilter filter value) ] []
                 , text filter
                 ]
 
         creditCheckbox : Int -> Html Msg
         creditCheckbox filter =
             div []
-                [ input [ type_ "checkbox", checked (List.any ((==) filter) model.creditFilters), onCheck (\value -> SetCreditFilter filter value) ] []
+                [ input [ type_ "checkbox", checked (List.member filter model.creditFilters), onCheck (\value -> SetCreditFilter filter value) ] []
                 , text <| String.fromInt filter
                 ]
 
         levelCheckbox : Int -> Html Msg
         levelCheckbox filter =
             div []
-                [ input [ type_ "checkbox", checked (List.any ((==) filter) model.levelFilters), onCheck (\value -> SetLevelFilter filter value) ] []
+                [ input [ type_ "checkbox", checked (List.member filter model.levelFilters), onCheck (\value -> SetLevelFilter filter value) ] []
                 , text <| String.fromInt filter
                 ]
 
         remoteStatusCheckbox : String -> Html Msg
         remoteStatusCheckbox filter =
             div []
-                [ input [ type_ "checkbox", checked (List.any ((==) filter) model.remoteStatusFilters), onCheck (\value -> SetRemoteStatusFilter filter value) ] []
+                [ input [ type_ "checkbox", checked (List.member filter model.remoteStatusFilters), onCheck (\value -> SetRemoteStatusFilter filter value) ] []
                 , text <| filter
                 ]
 
         termLengthCheckbox : String -> Html Msg
         termLengthCheckbox filter =
             div []
-                [ input [ type_ "checkbox", checked (List.any ((==) filter) model.termLengthFilters), onCheck (\value -> SetTermLengthFilter filter value) ] []
+                [ input [ type_ "checkbox", checked (List.member filter model.termLengthFilters), onCheck (\value -> SetTermLengthFilter filter value) ] []
                 , text <| filter
                 ]
 
@@ -265,12 +285,13 @@ view model =
             tr
                 [ hidden <|
                     not <|
-                        ((model.showingHidden || not class.hidden)
-                            && List.any (\c -> List.any ((==) c) model.dayFilters) class.days
-                            && List.any ((==) class.level) model.levelFilters
-                            && List.any ((==) class.credits) model.creditFilters
-                            && List.any ((==) class.remoteStatus) model.remoteStatusFilters
-                            && List.any ((==) class.termLength) model.termLengthFilters
+                        (model.showingHidden
+                            || not class.hidden
+                            --&& List.member class.days model.dayFilters
+                            --&& List.member class.level model.levelFilters
+                            --&& List.member class.credits model.creditFilters
+                            --&& List.member class.remoteStatus model.remoteStatusFilters
+                            && List.member class.termLength model.termLengthFilters
                         )
                 ]
                 [ td []
@@ -306,42 +327,35 @@ view model =
         , div [ id "filters" ]
             [ h2 [] [ text "Filters " ]
             , div [ class "filterDiv" ]
-                [ span [] [ text "Days" ]
-                , br [] []
-                , dayCheckbox "M"
-                , dayCheckbox "T"
-                , dayCheckbox "W"
-                , dayCheckbox "Th"
-                , dayCheckbox "F"
-                , dayCheckbox "TBA"
-                ]
+                ([ span [] [ text "Days" ]
+                 , br [] []
+                 ]
+                    ++ List.map dayCheckbox days
+                )
             , div [ class "filterDiv" ]
-                [ span [] [ text "Credits" ]
-                , br [] []
-                , creditCheckbox 1
-                , creditCheckbox 2
-                , creditCheckbox 4
-                ]
+                ([ span [] [ text "Credits" ]
+                 , br [] []
+                 ]
+                    ++ List.map creditCheckbox creditses
+                )
             , div [ class "filterDiv" ]
-                [ span [] [ text "Level" ]
-                , br [] []
-                , levelCheckbox 2000
-                , levelCheckbox 4000
-                ]
+                ([ span [] [ text "Level" ]
+                 , br [] []
+                 ]
+                    ++ List.map levelCheckbox levels
+                )
             , div [ class "filterDiv" ]
-                [ span [] [ text "Remote Status" ]
-                , br [] []
-                , remoteStatusCheckbox "Hybrid"
-                , remoteStatusCheckbox "Remote"
-                , remoteStatusCheckbox "In Person"
-                ]
+                ([ span [] [ text "Remote Status" ]
+                 , br [] []
+                 ]
+                    ++ List.map remoteStatusCheckbox remoteStatuses
+                )
             , div [ class "filterDiv" ]
-                [ span [] [ text "Length" ]
-                , br [] []
-                , termLengthCheckbox "Full Term"
-                , termLengthCheckbox "1st 7 Weeks"
-                , termLengthCheckbox "2nd 7 Weeks"
-                ]
+                ([ span [] [ text "Length" ]
+                 , br [] []
+                 ]
+                    ++ List.map termLengthCheckbox termLengths
+                )
             ]
         , table []
             [ thead [] <|
