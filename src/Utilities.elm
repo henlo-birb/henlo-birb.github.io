@@ -1,6 +1,7 @@
 module Utilities exposing (..)
 
 import Maybe.Extra
+import Parser exposing ((|=), Parser, getChompedString, succeed)
 
 
 ternary : Bool -> a -> a -> a
@@ -13,11 +14,13 @@ ternary cond a b =
 
 
 log =
-    identity
+    Debug.log ""
 
 
-
---Debug.log ""
+logChomp : String -> Parser a -> Parser String
+logChomp a chomp =
+    succeed (Debug.log a)
+        |= getChompedString chomp
 
 
 unwrapMap =

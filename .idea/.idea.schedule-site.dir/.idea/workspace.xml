@@ -22,8 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="added index html">
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Class.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Class.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utilities.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,10 +51,11 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/src/Main.elm" />
+      <option value="$PROJECT_DIR$/index.html" />
       <option value="$PROJECT_DIR$/build/index.html" />
       <option value="$PROJECT_DIR$/src/Time.elm" />
+      <option value="$PROJECT_DIR$/src/Utilities.elm" />
       <option value="$PROJECT_DIR$/src/Class.elm" />
-      <option value="$PROJECT_DIR$/index.html" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
@@ -101,6 +104,7 @@
       <workItem from="1605709772092" duration="4216000" />
       <workItem from="1605829630892" duration="899000" />
       <workItem from="1618845141670" duration="1674000" />
+      <workItem from="1618923761071" duration="3563000" />
     </task>
     <task id="LOCAL-00001" summary="added term length">
       <created>1605716367071</created>
@@ -158,7 +162,28 @@
       <option name="project" value="LOCAL" />
       <updated>1618872450578</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="switched index to redirect">
+      <created>1618872857904</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1618872857904</updated>
+    </task>
+    <task id="LOCAL-00010" summary="updated real index">
+      <created>1618872945936</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1618872945936</updated>
+    </task>
+    <task id="LOCAL-00011" summary="updated build">
+      <created>1618873200124</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1618873200124</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +214,9 @@
     <MESSAGE value="removed line breaking time" />
     <MESSAGE value="accounted for multiple time-slot weirdness, but only showing one time-slot" />
     <MESSAGE value="added index html" />
-    <option name="LAST_COMMIT_MESSAGE" value="added index html" />
+    <MESSAGE value="switched index to redirect" />
+    <MESSAGE value="updated real index" />
+    <MESSAGE value="updated build" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated build" />
   </component>
 </project>

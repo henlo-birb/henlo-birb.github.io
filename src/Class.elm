@@ -1,8 +1,8 @@
 module Class exposing (..)
 
-import Parser exposing ((|.), (|=), Parser, backtrackable, chompUntil, chompWhile, getChompedString, map, oneOf, spaces, succeed, symbol, token)
+import Parser exposing ((|.), (|=), Parser, backtrackable, chompIf, chompUntil, chompWhile, getChompedString, map, oneOf, spaces, succeed, symbol, token)
 import Time exposing (Time)
-import Utilities exposing (log)
+import Utilities exposing (log, logChomp)
 
 
 type alias Class =
@@ -43,11 +43,6 @@ generateClass link html =
                 |. chompUntil s
                 |. token s
 
-        logChomp : Parser a -> Parser String
-        logChomp chomp =
-            succeed log
-                |= getChompedString chomp
-
         makeList a b =
             [ a, b ]
 
@@ -79,12 +74,13 @@ generateClass link html =
                 |= oneOf
                     [ succeed makeList
                         |= backtrackable dayParser
-                        |. oneOf [ symbol "/", symbol ", " ]
+                        |. backtrackable (chompWhile (\c -> List.member c [ ',', '/', ' ' ]))
                         |= dayParser
                     , succeed List.singleton
                         |= dayParser
                     , succeed [ "Unknown" ]
                     ]
+                |. chompIf (\c -> List.member c [ ',', '/', ' ' ])
                 |. spaces
                 |= Time.timeParser
                 |. spaces
