@@ -287,10 +287,10 @@ view model =
                     not <|
                         (model.showingHidden
                             || not class.hidden
-                            --&& List.member class.days model.dayFilters
-                            --&& List.member class.level model.levelFilters
-                            --&& List.member class.credits model.creditFilters
-                            --&& List.member class.remoteStatus model.remoteStatusFilters
+                            && List.any (\d -> List.member d class.days) model.dayFilters
+                            && List.member class.level model.levelFilters
+                            && List.member class.credits model.creditFilters
+                            && List.member class.remoteStatus model.remoteStatusFilters
                             && List.member class.termLength model.termLengthFilters
                         )
                 ]
