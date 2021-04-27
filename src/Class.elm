@@ -1,6 +1,6 @@
 module Class exposing (..)
 
-import Parser exposing ((|.), (|=), Parser, backtrackable, chompIf, chompUntil, chompWhile, getChompedString, map, oneOf, spaces, succeed, symbol, token)
+import Parser exposing ((|.), (|=), Parser, backtrackable, chompIf, chompUntil, chompWhile, getChompedString, oneOf, spaces, succeed, symbol, token)
 import Time exposing (Time)
 import Utilities exposing (log, logChomp)
 
@@ -9,8 +9,8 @@ type alias Class =
     { hidden : Bool
     , name : String
     , remoteStatus : String
-    , level : Int
-    , credits : Int
+    , level : String
+    , credits : String
     , days : List String
     , startTime : Time
     , endTime : Time
@@ -68,9 +68,9 @@ generateClass link html =
                     , succeed "Unknown"
                     ]
                 |. chompThrough "Course Level: "
-                |= Parser.int
+                |= Parser.map String.fromInt Parser.int
                 |. chompThrough "Credits: "
-                |= Parser.int
+                |= Parser.map String.fromInt Parser.int
                 |. chompWhile (\c -> not (String.contains (String.fromChar c) "MTWF"))
                 |= oneOf
                     [ succeed makeList

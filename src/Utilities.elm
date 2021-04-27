@@ -1,5 +1,7 @@
 module Utilities exposing (..)
 
+import AllDict
+import Maybe
 import Maybe.Extra
 import Parser exposing ((|=), Parser, getChompedString, succeed)
 
@@ -34,3 +36,8 @@ unwrapMap =
 unwrap : a -> Maybe a -> a
 unwrap a =
     unwrapMap a identity
+
+
+get : k -> AllDict.Dict k (List v) -> List v
+get key dict =
+    Maybe.withDefault [] <| AllDict.get key dict

@@ -3,6 +3,7 @@ module Main exposing (..)
 --import Html.Attributes exposing (..)
 --import File exposing (File)
 
+import AllDict
 import Browser
 import Class exposing (..)
 import FontAwesome.Icon exposing (viewIcon)
@@ -14,7 +15,7 @@ import Html.Events exposing (..)
 import Http exposing (expectString)
 import List exposing (map, sortBy, sortWith)
 import List.Extra exposing (dropWhile, elemIndex, remove, uncons, updateIf)
-import Maybe exposing (andThen)
+import Maybe exposing (andThen, withDefault)
 import Time exposing (Time)
 import Utilities exposing (..)
 
@@ -23,52 +24,7 @@ import Utilities exposing (..)
 ---- MODEL ----
 
 
-type alias Model =
-    { gottenLinks : List String
-    , newLinks : List String
-    , classes : List Class
-    , inputText : String
-    , showingHidden : Bool
-    , sortingReversed : Bool
-    , sortingBy : SortBy
-    , dayFilters : List String
-    , levelFilters : List Int
-    , creditFilters : List Int
-    , remoteStatusFilters : List String
-    , termLengthFilters : List String
-    }
-
-
-days =
-    [ "M", "T", "W", "Th", "F", "TBA" ]
-
-
-levels =
-    [ 2000, 4000 ]
-
-
-creditses =
-    [ 1, 2, 4 ]
-
-
-remoteStatuses =
-    [ "Hybrid", "In Person", "Remotely Accessible" ]
-
-
-termLengths =
-    [ "Full Term", "1st 7 Weeks", "2nd 7 Weeks", "1st Module Block", "2nd Module Block", "3rd Module Block", "4th Module Block" ]
-
-
-init : ( Model, Cmd Msg )
-init =
-    ( Model [] [] [] "" False False Name days levels creditses remoteStatuses termLengths, Cmd.none )
-
-
-
----- UPDATE ----
-
-
-type SortBy
+type Category
     = Name
     | Credits
     | Level
@@ -80,17 +36,65 @@ type SortBy
     | TermLength
 
 
+categoryStrings : List ( Category, String )
+categoryStrings =
+    [ ( Name, "Class Name" )
+    , ( Credits, "Credits" )
+    , ( Level, "Level" )
+    , ( Day, "Days" )
+    , ( StartTime, "Start Time" )
+    , ( EndTime, "End Time" )
+    , ( RemoteStatus, "Remote Status" )
+    , ( Frequency, "Frequency" )
+    , ( TermLength, "Length" )
+    ]
+
+
+type alias Model =
+    { gottenLinks : List String
+    , newLinks : List String
+    , classes : List Class
+    , inputText : String
+    , showingHidden : Bool
+    , sortingReversed : Bool
+    , sortingBy : Category
+    , filters : AllDict.Dict Category (List String)
+    }
+
+
+filterKeys : List Category
+filterKeys =
+    [ Day, Level, Credits, RemoteStatus, TermLength ]
+
+
+filterValues : AllDict.Dict Category (List String)
+filterValues =
+    AllDict.fromList
+        [ ( Day, [ "M", "T", "W", "Th", "F", "TBA" ] )
+        , ( Level, [ "2000", "4000" ] )
+        , ( Credits, [ "1", "2", "4" ] )
+        , ( RemoteStatus, [ "Hybrid", "In Person", "Remotely Accessible" ] )
+        , ( TermLength, [ "Full Term", "1st 7 Weeks", "2nd 7 Weeks", "1st Module Block", "2nd Module Block", "3rd Module Block", "4th Module Block" ] )
+        ]
+
+
+init : ( Model, Cmd Msg )
+init =
+    ( Model [] [] [] "" False False Name filterValues, Cmd.none )
+
+
+
+---- UPDATE ----
+
+
 type Msg
     = SetText String
     | GotPage String (Result Http.Error String)
     | ToggleClassHidden String
     | ToggleShowingHidden
-    | SetDayFilter String Bool
-    | SetLevelFilter Int Bool
-    | SetCreditFilter Int Bool
-    | SetTermLengthFilter String Bool
-    | SetRemoteStatusFilter String Bool
-    | SortClasses SortBy
+    | SetFilter Category String Bool
+    | ToggleFilters Category
+    | SortClasses Category
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -141,40 +145,25 @@ update msg model =
         ToggleShowingHidden ->
             ( { model | showingHidden = not model.showingHidden }, Cmd.none )
 
-        SetDayFilter filter value ->
+        SetFilter category filter value ->
             let
-                dayFilters =
-                    ternary value (model.dayFilters ++ [ filter ]) (remove filter model.dayFilters)
-            in
-            ( { model | dayFilters = dayFilters }, Cmd.none )
+                oldFilters =
+                    get category model.filters
 
-        SetLevelFilter filter value ->
-            let
-                levelFilters =
-                    ternary value (model.levelFilters ++ [ filter ]) (remove filter model.levelFilters)
+                newFilters =
+                    ternary value (oldFilters ++ [ filter ]) (remove filter oldFilters)
             in
-            ( { model | levelFilters = levelFilters }, Cmd.none )
+            ( { model | filters = AllDict.insert category newFilters model.filters }, Cmd.none )
 
-        SetCreditFilter filter value ->
+        ToggleFilters category ->
             let
-                creditFilters =
-                    ternary value (model.creditFilters ++ [ filter ]) (remove filter model.creditFilters)
-            in
-            ( { model | creditFilters = creditFilters }, Cmd.none )
+                oldFilters =
+                    get category model.filters
 
-        SetRemoteStatusFilter filter value ->
-            let
-                remoteStatusFilters =
-                    ternary value (model.remoteStatusFilters ++ [ filter ]) (remove filter model.remoteStatusFilters)
+                newFilters =
+                    ternary (List.isEmpty oldFilters) (get category filterValues) []
             in
-            ( { model | remoteStatusFilters = remoteStatusFilters }, Cmd.none )
-
-        SetTermLengthFilter filter value ->
-            let
-                termLengthFilters =
-                    ternary value (model.termLengthFilters ++ [ filter ]) (remove filter model.termLengthFilters)
-            in
-            ( { model | termLengthFilters = termLengthFilters }, Cmd.none )
+            ( { model | filters = AllDict.insert category newFilters model.filters }, Cmd.none )
 
         SortClasses by ->
             let
@@ -237,47 +226,19 @@ view model =
         caret a =
             ternary (model.sortingBy == a && model.sortingReversed) sortUp sortDown
 
-        dayCheckbox : String -> Html Msg
-        dayCheckbox filter =
+        checkbox : Category -> String -> Html Msg
+        checkbox category filter =
             div []
-                [ input [ type_ "checkbox", checked (List.member filter model.dayFilters), onCheck (\value -> SetDayFilter filter value) ] []
+                [ input [ type_ "checkbox", checked (List.member filter (get category model.filters)), onCheck (\value -> SetFilter category filter value) ] []
                 , text filter
                 ]
 
-        creditCheckbox : Int -> Html Msg
-        creditCheckbox filter =
-            div []
-                [ input [ type_ "checkbox", checked (List.member filter model.creditFilters), onCheck (\value -> SetCreditFilter filter value) ] []
-                , text <| String.fromInt filter
-                ]
-
-        levelCheckbox : Int -> Html Msg
-        levelCheckbox filter =
-            div []
-                [ input [ type_ "checkbox", checked (List.member filter model.levelFilters), onCheck (\value -> SetLevelFilter filter value) ] []
-                , text <| String.fromInt filter
-                ]
-
-        remoteStatusCheckbox : String -> Html Msg
-        remoteStatusCheckbox filter =
-            div []
-                [ input [ type_ "checkbox", checked (List.member filter model.remoteStatusFilters), onCheck (\value -> SetRemoteStatusFilter filter value) ] []
-                , text <| filter
-                ]
-
-        termLengthCheckbox : String -> Html Msg
-        termLengthCheckbox filter =
-            div []
-                [ input [ type_ "checkbox", checked (List.member filter model.termLengthFilters), onCheck (\value -> SetTermLengthFilter filter value) ] []
-                , text <| filter
-                ]
-
-        classTh : String -> SortBy -> Html Msg
-        classTh name sortBy_ =
-            th [ class "clickable", onClick <| SortClasses sortBy_ ]
+        classTh : ( Category, String ) -> Html Msg
+        classTh ( category, name ) =
+            th [ class "clickable", onClick <| SortClasses category ]
                 [ span [] [ text name ]
                 , br [] []
-                , viewIcon <| caret sortBy_
+                , viewIcon <| caret category
                 ]
 
         classTr : Class -> Html Msg
@@ -285,13 +246,12 @@ view model =
             tr
                 [ hidden <|
                     not <|
-                        (model.showingHidden
-                            || not class.hidden
-                            && List.any (\d -> List.member d class.days) model.dayFilters
-                            && List.member class.level model.levelFilters
-                            && List.member class.credits model.creditFilters
-                            && List.member class.remoteStatus model.remoteStatusFilters
-                            && List.member class.termLength model.termLengthFilters
+                        ((model.showingHidden || not class.hidden)
+                            && List.any (\d -> List.member d class.days) (get Day model.filters)
+                            && List.member class.level (get Level model.filters)
+                            && List.member class.credits (get Credits model.filters)
+                            && List.member class.remoteStatus (get RemoteStatus model.filters)
+                            && List.member class.termLength (get TermLength model.filters)
                         )
                 ]
                 [ td []
@@ -299,8 +259,8 @@ view model =
                         [ text <| ternary class.hidden "unhide" "hide" ]
                     ]
                 , td [] [ text class.name ]
-                , td [] [ text <| String.fromInt class.credits ]
-                , td [] [ text <| String.fromInt class.level ]
+                , td [] [ text <| class.credits ]
+                , td [] [ text <| class.level ]
                 , td [] [ text <| String.join "/" class.days ]
                 , td [] [ text <| Time.toString class.startTime ]
                 , td [] [ text <| Time.toString class.endTime ]
@@ -310,10 +270,26 @@ view model =
                 , td [] [ a [ href class.link ] [ text class.link ] ]
                 ]
 
+        filterDiv : ( Category, String ) -> Html Msg
+        filterDiv ( category, name ) =
+            div [ class "filterDiv" ]
+                ([ span [] [ text name ]
+                 , br [] []
+                 ]
+                    ++ List.map (checkbox category) (get category filterValues)
+                    ++ [ button [ class "toggleFiltersButton", onClick <| ToggleFilters category ] [ text "Toggle all" ] ]
+                )
+
+        filterDivs =
+            let
+                kvs : List ( Category, String )
+                kvs =
+                    List.map (\k -> withDefault ( Name, "Class Name" ) <| List.head <| List.filter (\( key, _ ) -> key == k) categoryStrings) filterKeys
+            in
+            List.map filterDiv kvs
+
         headers =
-            List.map2 classTh
-                [ "Class Name", "Credits", "Level", "Days", "Start Time", "End Time", "Remote Status", "Frequency", "Length" ]
-                [ Name, Credits, Level, Day, StartTime, EndTime, RemoteStatus, Frequency, TermLength ]
+            List.map classTh categoryStrings
     in
     div [ id "bigContainer" ]
         [ FontAwesome.Styles.css
@@ -325,38 +301,9 @@ view model =
         , br [] []
         , br [] []
         , div [ id "filters" ]
-            [ h2 [] [ text "Filters " ]
-            , div [ class "filterDiv" ]
-                ([ span [] [ text "Days" ]
-                 , br [] []
-                 ]
-                    ++ List.map dayCheckbox days
-                )
-            , div [ class "filterDiv" ]
-                ([ span [] [ text "Credits" ]
-                 , br [] []
-                 ]
-                    ++ List.map creditCheckbox creditses
-                )
-            , div [ class "filterDiv" ]
-                ([ span [] [ text "Level" ]
-                 , br [] []
-                 ]
-                    ++ List.map levelCheckbox levels
-                )
-            , div [ class "filterDiv" ]
-                ([ span [] [ text "Remote Status" ]
-                 , br [] []
-                 ]
-                    ++ List.map remoteStatusCheckbox remoteStatuses
-                )
-            , div [ class "filterDiv" ]
-                ([ span [] [ text "Length" ]
-                 , br [] []
-                 ]
-                    ++ List.map termLengthCheckbox termLengths
-                )
-            ]
+            ([ h2 [] [ text "Filters " ] ]
+                ++ filterDivs
+            )
         , table []
             [ thead [] <|
                 [ th []

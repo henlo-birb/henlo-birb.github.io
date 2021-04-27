@@ -69,12 +69,16 @@ span {
 }
 
 .filterDiv {
+  display: flex;
   justify-content: flex-start;
   flex-direction: column;
   border: 2px solid black;
   flex-grow: 1;
   padding: 5px;
-
+}
+.toggleFiltersButton {
+  margin-top: auto;
+  margin-right: auto;
 }
 
 table {

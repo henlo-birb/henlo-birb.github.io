@@ -17,6 +17,7 @@
             "elm-community/list-extra": "8.2.4",
             "elm-community/maybe-extra": "5.2.0",
             "hecrj/html-parser": "2.4.0",
+            "jjant/elm-dict": "2.0.0",
             "lattyware/elm-fontawesome": "5.0.0"
         },
         "indirect": {
