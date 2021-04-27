@@ -22,9 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="">
+    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="fixed dumb mistake">
+      <change afterPath="$PROJECT_DIR$/elmapp.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Class.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Class.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/precache-manifest.cc6e06d4c833aef7ed403f98a2ba79f3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.ab0e580c.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/static/js/main.ab0e580c.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,10 +69,11 @@
       <option value="$PROJECT_DIR$/elm.json" />
       <option value="$PROJECT_DIR$/src/Utilities.elm" />
       <option value="$PROJECT_DIR$/src/main.css" />
+      <option value="$PROJECT_DIR$/src/Class.elm" />
       <option value="$PROJECT_DIR$/build/index.html" />
       <option value="$PROJECT_DIR$/index.html" />
-      <option value="$PROJECT_DIR$/src/Class.elm" />
       <option value="$PROJECT_DIR$/src/Main.elm" />
+      <option value="$PROJECT_DIR$/elmapp.config.js" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
@@ -118,7 +126,7 @@
       <workItem from="1618929081483" duration="5049000" />
       <workItem from="1619067280791" duration="700000" />
       <workItem from="1619493572445" duration="8660000" />
-      <workItem from="1619534157011" duration="1690000" />
+      <workItem from="1619534157011" duration="4522000" />
     </task>
     <task id="LOCAL-00001" summary="added term length">
       <created>1605716367071</created>
@@ -239,7 +247,21 @@
       <option name="project" value="LOCAL" />
       <updated>1619501861549</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added max enrollment, added link to curriculum">
+      <created>1619536078708</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1619536078709</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fixed dumb mistake">
+      <created>1619548717577</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1619548717577</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +300,9 @@
     <MESSAGE value="fixed dumb comment mistake, added margin-bottom on table" />
     <MESSAGE value="added build to paths in index" />
     <MESSAGE value="Refactored for more flexibility, added toggle all button, changed show hidden behavior to only show classes hidden with the hide button that pass through the filters instead of all hidden classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored for more flexibility, added toggle all button, changed show hidden behavior to only show classes hidden with the hide button that pass through the filters instead of all hidden classes" />
+    <MESSAGE value="added max enrollment, added link to curriculum" />
+    <MESSAGE value="fixed dumb mistake" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed dumb mistake" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

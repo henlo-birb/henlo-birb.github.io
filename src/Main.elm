@@ -193,8 +193,11 @@ update msg model =
 
                                 firstDay =
                                     .days >> List.head >> unwrap ""
+
+                                lastDay =
+                                    .days >> List.reverse >> List.head >> unwrap ""
                             in
-                            sortBy (firstDay >> dayOrder)
+                            sortBy (lastDay >> dayOrder) >> sortBy (firstDay >> dayOrder)
 
                         RemoteStatus ->
                             let
