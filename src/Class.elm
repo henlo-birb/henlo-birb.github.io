@@ -15,6 +15,7 @@ type alias Class =
     , startTime : Time
     , endTime : Time
     , termLength : String
+    , maxEnrollment : String
     , frequency : String
     , link : String
     }
@@ -99,6 +100,9 @@ generateClass link html =
                     , succeed "Unknown"
                     ]
                 |. chompThrough ")"
+                |. chompThrough "Maximum Enrollment:"
+                |. spaces
+                |= Parser.map String.fromInt Parser.int
                 |. chompThrough "Course Frequency:"
                 |= (chompUntil "<br>" |> getChompedString |> Parser.map String.trim)
                 |= succeed link

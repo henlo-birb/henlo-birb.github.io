@@ -24,11 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elm.json" beforeDir="false" afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Class.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Class.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utilities.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilities.elm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +36,7 @@
     <elmProjects>
       <project path="$PROJECT_DIR$/elm.json" />
     </elmProjects>
-    <settings elmCompilerPath="C:\Users\kid_y\scoop\apps\nodejs\current\bin\elm.cmd" elmFormatPath="C:\Users\kid_y\scoop\apps\nodejs\current\bin\elm-format.cmd" elmTestPath="null" isElmFormatOnSaveEnabled="true" />
+    <settings elmCompilerPath="C:\Users\kid_y\scoop\apps\nodejs\current\bin\elm.cmd" elmFormatPath="C:\Users\kid_y\scoop\apps\nodejs\current\bin\elm-format.cmd" elmTestPath="" isElmFormatOnSaveEnabled="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -51,16 +48,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/src/Time.elm" />
+      <option value="$PROJECT_DIR$/elm.json" />
+      <option value="$PROJECT_DIR$/src/Utilities.elm" />
+      <option value="$PROJECT_DIR$/src/main.css" />
       <option value="$PROJECT_DIR$/build/index.html" />
       <option value="$PROJECT_DIR$/index.html" />
       <option value="$PROJECT_DIR$/src/Class.elm" />
-      <option value="$PROJECT_DIR$/elm.json" />
-      <option value="$PROJECT_DIR$/src/Utilities.elm" />
       <option value="$PROJECT_DIR$/src/Main.elm" />
-      <option value="$PROJECT_DIR$/src/main.css" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
@@ -112,7 +117,8 @@
       <workItem from="1618923761071" duration="4210000" />
       <workItem from="1618929081483" duration="5049000" />
       <workItem from="1619067280791" duration="700000" />
-      <workItem from="1619493572445" duration="7909000" />
+      <workItem from="1619493572445" duration="8660000" />
+      <workItem from="1619534157011" duration="1690000" />
     </task>
     <task id="LOCAL-00001" summary="added term length">
       <created>1605716367071</created>
@@ -226,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619067894542</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Refactored for more flexibility, added toggle all button, changed show hidden behavior to only show classes hidden with the hide button that pass through the filters instead of all hidden classes">
+      <created>1619501861549</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1619501861549</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +277,11 @@
     <MESSAGE value="added module support, fixed bugs with second 7 week classes" />
     <MESSAGE value="fixed dumb comment mistake, added margin-bottom on table" />
     <MESSAGE value="added build to paths in index" />
-    <option name="LAST_COMMIT_MESSAGE" value="added build to paths in index" />
+    <MESSAGE value="Refactored for more flexibility, added toggle all button, changed show hidden behavior to only show classes hidden with the hide button that pass through the filters instead of all hidden classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored for more flexibility, added toggle all button, changed show hidden behavior to only show classes hidden with the hide button that pass through the filters instead of all hidden classes" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

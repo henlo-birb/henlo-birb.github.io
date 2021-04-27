@@ -32,6 +32,7 @@ type Category
     | EndTime
     | Day
     | RemoteStatus
+    | MaxEnrollment
     | Frequency
     | TermLength
 
@@ -45,6 +46,7 @@ categoryStrings =
     , ( StartTime, "Start Time" )
     , ( EndTime, "End Time" )
     , ( RemoteStatus, "Remote Status" )
+    , ( MaxEnrollment, "Maximum Enrollment" )
     , ( Frequency, "Frequency" )
     , ( TermLength, "Length" )
     ]
@@ -201,6 +203,9 @@ update msg model =
                             in
                             sortBy (.remoteStatus >> remoteOrder)
 
+                        MaxEnrollment ->
+                            sortBy .maxEnrollment
+
                         Frequency ->
                             sortBy .frequency
 
@@ -259,15 +264,16 @@ view model =
                         [ text <| ternary class.hidden "unhide" "hide" ]
                     ]
                 , td [] [ text class.name ]
-                , td [] [ text <| class.credits ]
-                , td [] [ text <| class.level ]
+                , td [] [ text class.credits ]
+                , td [] [ text class.level ]
                 , td [] [ text <| String.join "/" class.days ]
                 , td [] [ text <| Time.toString class.startTime ]
                 , td [] [ text <| Time.toString class.endTime ]
                 , td [] [ text class.remoteStatus ]
+                , td [] [ text class.maxEnrollment ]
                 , td [] [ text class.frequency ]
                 , td [] [ text class.termLength ]
-                , td [] [ a [ href class.link ] [ text class.link ] ]
+                , td [] [ a [ href class.link ] [ text "Link" ] ]
                 ]
 
         filterDiv : ( Category, String ) -> Html Msg
@@ -295,7 +301,11 @@ view model =
         [ FontAwesome.Styles.css
         , h1 [] [ text "Bennington College Schedule Creator" ]
         , p [] [ text "If you have any issues or questions, email me at vriskaweaver@bennington.edu" ]
-        , h2 [] [ text "Put links to class pages here ↓" ]
+        , h2 []
+            [ text "Put links to class "
+            , a [ href "https://curriculum.bennington.edu/" ] [ text "curriculum" ]
+            , text " pages here ↓"
+            ]
         , textarea [ autofocus True, onInput SetText ] []
         , br [] []
         , br [] []
