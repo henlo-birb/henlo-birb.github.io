@@ -1,4 +1,4 @@
-module Main exposing (..)
+port module Main exposing (..)
 
 --import Html.Attributes exposing (..)
 --import File exposing (File)
@@ -10,9 +10,10 @@ import FontAwesome.Icon exposing (viewIcon)
 import FontAwesome.Solid exposing (sortDown, sortUp)
 import FontAwesome.Styles
 import Html exposing (Html, a, br, button, div, h1, h2, input, p, span, table, tbody, td, text, textarea, th, thead, tr)
-import Html.Attributes exposing (autofocus, checked, class, hidden, href, id, type_)
+import Html.Attributes exposing (autofocus, checked, class, hidden, href, id, style, type_)
 import Html.Events exposing (..)
 import Http exposing (expectString)
+import Json.Encode as E
 import List exposing (map, sortBy, sortWith)
 import List.Extra exposing (dropWhile, elemIndex, remove, uncons, updateIf)
 import Maybe exposing (andThen, withDefault)
@@ -85,6 +86,9 @@ init =
     ( Model [] [] [] "" False False Name filterValues, Cmd.none )
 
 
+port savePdf : String -> Cmd msg
+
+
 
 ---- UPDATE ----
 
@@ -97,6 +101,7 @@ type Msg
     | SetFilter Category String Bool
     | ToggleFilters Category
     | SortClasses Category
+    | SavePdf
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -223,6 +228,13 @@ update msg model =
             , Cmd.none
             )
 
+        SavePdf ->
+            let
+                data =
+                    List.foldl (++) [] <| map Class.encode <| List.filter (\c -> not c.hidden) model.classes
+            in
+            ( model, savePdf <| E.encode 4 <| E.list identity data )
+
 
 
 ---- VIEW ----
@@ -244,7 +256,7 @@ view model =
         classTh : ( Category, String ) -> Html Msg
         classTh ( category, name ) =
             th [ class "clickable", onClick <| SortClasses category ]
-                [ span [] [ text name ]
+                [ text name
                 , br [] []
                 , viewIcon <| caret category
                 ]
@@ -317,7 +329,8 @@ view model =
             ([ h2 [] [ text "Filters " ] ]
                 ++ filterDivs
             )
-        , table []
+        , button [ onClick SavePdf, style "margin-right" "auto" ] [ text "Export Schedule as PDF" ]
+        , table [ id "table" ]
             [ thead [] <|
                 [ th []
                     [ button [ onClick ToggleShowingHidden ] [ text <| ternary model.showingHidden "Hide hidden" "Show hidden" ]

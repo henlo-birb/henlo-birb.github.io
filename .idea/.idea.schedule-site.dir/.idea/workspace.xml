@@ -22,17 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="fixed dumb mistake">
-      <change afterPath="$PROJECT_DIR$/elmapp.config.js" afterDir="false" />
+    <list default="true" id="2173f486-9a78-4afb-ae4f-63fa103c6695" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/csv-plugin.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.schedule-site.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/precache-manifest.cc6e06d4c833aef7ed403f98a2ba79f3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.ab0e580c.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.ab0e580c.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Class.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Class.elm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.elm" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,11 +66,12 @@
       <option value="$PROJECT_DIR$/elm.json" />
       <option value="$PROJECT_DIR$/src/Utilities.elm" />
       <option value="$PROJECT_DIR$/src/main.css" />
-      <option value="$PROJECT_DIR$/src/Class.elm" />
       <option value="$PROJECT_DIR$/build/index.html" />
       <option value="$PROJECT_DIR$/index.html" />
-      <option value="$PROJECT_DIR$/src/Main.elm" />
       <option value="$PROJECT_DIR$/elmapp.config.js" />
+      <option value="$PROJECT_DIR$/src/Class.elm" />
+      <option value="$PROJECT_DIR$/src/Main.elm" />
+      <option value="$PROJECT_DIR$/src/index.js" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1k3hLdWwjGIsjBj2xz1stmHWnQZ" />
@@ -127,6 +125,7 @@
       <workItem from="1619067280791" duration="700000" />
       <workItem from="1619493572445" duration="8660000" />
       <workItem from="1619534157011" duration="4522000" />
+      <workItem from="1619981319114" duration="3433000" />
     </task>
     <task id="LOCAL-00001" summary="added term length">
       <created>1605716367071</created>

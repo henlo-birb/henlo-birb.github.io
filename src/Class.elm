@@ -1,5 +1,6 @@
 module Class exposing (..)
 
+import Json.Encode as E exposing (list, string)
 import Parser exposing ((|.), (|=), Parser, backtrackable, chompIf, chompUntil, chompWhile, getChompedString, oneOf, spaces, succeed, symbol, token)
 import Time exposing (Time)
 import Utilities exposing (log, logChomp)
@@ -23,6 +24,26 @@ type alias Class =
 
 termStrings =
     [ "Full-Term", "Full-term", "Full Term", "Full term" ]
+
+
+encode : Class -> List E.Value
+encode class =
+    List.map
+        (\day ->
+            E.object
+                [ ( "Class Name", string class.name )
+                , ( "Remote Status", string class.remoteStatus )
+                , ( "Level", string class.level )
+                , ( "Credits", string class.credits )
+                , ( "Day", string day )
+                , ( "Start Time", string <| Time.toString class.startTime )
+                , ( "End Time", string <| Time.toString class.endTime )
+                , ( "Max Enrollment", string class.maxEnrollment )
+                , ( "Frequency", string class.frequency )
+                , ( "Link", string class.link )
+                ]
+        )
+        class.days
 
 
 generateClass : String -> String -> Result (List Parser.DeadEnd) Class
