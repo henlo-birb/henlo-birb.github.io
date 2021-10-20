@@ -1,6 +1,19 @@
 {
+  "name": "schedule_site",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "jspdf": "^2.3.1",
-    "jspdf-autotable": "^3.5.14"
+    "jspdf": "^2.4.0",
+    "jspdf-autotable": "^3.5.20",
+    "parcel": "^2.0.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-elm": "^2.0.0",
+    "elm": "^0.19.1-5"
   }
 }

@@ -319,7 +319,7 @@ view model =
         , h2 []
             [ text "Put links to class "
             , a [ href "https://curriculum.bennington.edu/" ] [ text "curriculum" ]
-            , text " pages here ↓"
+            , text " pages here ↓ (it should auto-populate the table in a few seconds)"
             ]
         , textarea [ autofocus True, onInput SetText ] []
         , br [] []
